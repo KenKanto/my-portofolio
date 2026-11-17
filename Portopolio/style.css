@@ -1,0 +1,672 @@
+/* ==========================================================
+   1. DESIGN TOKENS — edit everything here
+   ========================================================== */
+:root {
+    /* Colors */
+    --color-maroon: #7a1c1c; /* main brand red: headings, buttons */
+    --color-maroon-deep: #6b2018; /* value cards */
+    --color-cream: #fbf9ee; /* light sections, text on dark */
+    --color-brown: #2a1210; /* dark text & dark section */
+    --color-blush: #e6d9d1; /* hero background (soft beige-pink) */
+    --color-blush-light: #f3ebe4; /* hero gradient highlight */
+
+    /* Fonts */
+    --font-heading: "Instrument Serif", "Times New Roman", serif;
+    --font-body: "Space Mono", "Courier New", monospace;
+    --font-script: "Homemade Apple", cursive;
+
+    /* Sizes */
+    --fs-hero: clamp(3.6rem, 12.5vw, 10rem);
+    --fs-section: clamp(2.2rem, 5vw, 3.6rem);
+    --fs-body: 0.9rem;
+
+    /* Layout */
+    --container: 1100px; /* navbar, hero, footer */
+    --content-width: 900px; /* about, skills, values (keeps them aligned) */
+    --radius-pill: 999px;
+    --gutter: clamp(1rem, 4vw, 2rem);
+
+    /* Motion */
+    --marquee-speed: 22s;
+}
+
+/* ==========================================================
+   2. BASE
+   ========================================================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: var(--font-body);
+    font-size: var(--fs-body);
+    line-height: 1.7;
+    color: var(--color-brown);
+    background: var(--color-cream);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+.container {
+    width: min(var(--container), 100% - var(--gutter) * 2);
+    margin-inline: auto;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    line-height: 0.95;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+}
+h1 em,
+h2 em {
+    font-style: italic;
+    text-transform: none;
+}
+
+.script {
+    font-family: var(--font-script);
+    color: var(--color-maroon);
+    font-size: 0.95rem;
+    display: inline-block;
+    transform: rotate(-4deg);
+}
+
+/* Pill button */
+.btn {
+    display: inline-block;
+    padding: 0.85rem 1.8rem;
+    border-radius: var(--radius-pill);
+    background: var(--color-maroon);
+    color: var(--color-cream);
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1.5px solid var(--color-maroon);
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease;
+}
+.btn:hover {
+    /* transform: translateY(-3px); */
+    background: transparent;
+    color: var(--color-maroon);
+}
+.btn--ghost {
+    background: transparent;
+    color: var(--color-maroon);
+}
+.btn--ghost:hover {
+    background: var(--color-maroon);
+    color: var(--color-cream);
+}
+
+/* Film-grain texture (used on dark/maroon surfaces) */
+.grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.22;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* ==========================================================
+   3. NAVBAR
+   ========================================================== */
+.nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    padding: 1.1rem 0;
+}
+.nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.nav__logo {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    color: var(--color-brown);
+}
+.nav__links {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+    list-style: none;
+}
+.nav__links a {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+.nav__links a:not(.btn):hover {
+    color: var(--color-maroon);
+}
+.nav__links .btn {
+    padding: 0.55rem 1.2rem;
+    font-size: 0.65rem;
+    color: var(--color-cream);
+}
+.nav__links .btn:hover {
+    color: var(--color-maroon);
+}
+
+/* ==========================================================
+   4. HERO
+   ========================================================== */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    padding: 6.5rem 0 0;
+    background:
+        radial-gradient(
+            ellipse at 50% 55%,
+            var(--color-blush-light) 0%,
+            transparent 60%
+        ),
+        var(--color-blush);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+.hero__title {
+    font-size: var(--fs-hero);
+    color: var(--color-maroon);
+    text-align: center;
+    white-space: nowrap;
+    position: relative;
+    z-index: 2;
+}
+/* 3 columns x 3 rows. Arch sits in the middle column and spans all rows.
+   Labels sit at the 4 corners, so the layout is symmetrical around the arch. */
+.hero__stage {
+    position: relative;
+    width: min(var(--container), 100% - var(--gutter) * 2);
+    flex: 1;
+    min-height: clamp(300px, 42vw, 480px);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    column-gap: clamp(1rem, 4vw, 3rem);
+    margin-top: 0.75rem;
+}
+.hero__label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+    color: var(--color-brown);
+    position: relative;
+    align-self: center;
+}
+.hero__label--left {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+    text-align: left;
+}
+.hero__label--right {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+    text-align: right;
+}
+.hero__label--stat {
+    grid-column: 1;
+    grid-row: 3;
+    justify-self: start;
+    text-align: left;
+}
+.hero__label svg {
+    position: absolute;
+    width: 56px;
+    height: 34px;
+    stroke: var(--color-brown);
+    fill: none;
+    stroke-width: 1.4;
+    stroke-linecap: round;
+}
+.hero__label--left svg {
+    left: 55%;
+    top: 115%;
+}
+.hero__label--right svg {
+    right: 55%;
+    top: 115%;
+    transform: scaleX(1);
+}
+
+/* Arch replaces the portrait photo */
+.arch {
+    position: relative;
+    grid-column: 2;
+    grid-row: 1 / -1;
+    align-self: end;
+    width: clamp(240px, 30vw, 360px);
+    height: 100%;
+    min-height: 290px;
+    background: var(--color-maroon);
+    border-radius: 999px 999px 0 0;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    box-shadow: inset 0 0 90px rgba(0, 0, 0, 0.28);
+}
+.arch pre {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-body);
+    font-size: clamp(0.6rem, 1.15vw, 0.8rem);
+    line-height: 1.8;
+    color: var(--color-cream);
+    padding-top: 18%;
+    white-space: pre;
+}
+.arch .tok-k {
+    opacity: 0.65;
+}
+.arch .tok-s {
+    color: var(--color-blush);
+    font-style: italic;
+}
+.arch .cursor {
+    display: inline-block;
+    width: 0.55em;
+    height: 1em;
+    background: var(--color-cream);
+    vertical-align: -0.15em;
+    animation: blink 1s steps(1) infinite;
+}
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+.hero__cta {
+    grid-column: 3;
+    grid-row: 3;
+    justify-self: end;
+    align-self: center;
+    z-index: 3;
+}
+
+/* ==========================================================
+   5. ABOUT
+   ========================================================== */
+.about {
+    background: var(--color-cream);
+    padding: clamp(4rem, 9vw, 7rem) 0 clamp(3rem, 6vw, 5rem);
+}
+.about__head {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+.about__head h2 {
+    font-size: var(--fs-section);
+    color: var(--color-maroon);
+    margin-top: 0.6rem;
+}
+.about__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.7fr;
+    gap: 2rem;
+    align-items: start;
+    max-width: var(--content-width);
+    margin-inline: auto;
+}
+.about__lead {
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    line-height: 1.6;
+    font-weight: 700;
+}
+.about__text p + p {
+    margin-top: 1rem;
+}
+.about__text .btn {
+    margin-top: 1.5rem;
+}
+
+.polaroid {
+    background: #fff;
+    padding: 10px 10px 34px;
+    box-shadow: 0 10px 30px rgba(42, 18, 16, 0.18);
+    transform: rotate(3deg);
+    position: relative;
+    transition: transform 0.4s ease;
+}
+.polaroid:hover {
+    transform: rotate(0deg) scale(1.03);
+}
+.polaroid::before {
+    /* tape */
+    content: "";
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    width: 60px;
+    height: 22px;
+    transform: translateX(-50%) rotate(-3deg);
+    background: rgba(230, 217, 209, 0.85);
+}
+.polaroid__img {
+    aspect-ratio: 1;
+    background: var(--color-maroon);
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    color: var(--color-cream);
+}
+.polaroid__cap {
+    font-family: var(--font-script);
+    font-size: 0.7rem;
+    color: var(--color-maroon);
+    text-align: center;
+    margin-top: 10px;
+}
+
+.skills {
+    margin-top: 3.5rem;
+    display: grid;
+    grid-template-columns: 0.9fr 1.6fr;
+    gap: 2rem;
+    max-width: var(--content-width);
+    margin-inline: auto;
+    align-items: center;
+}
+.skills__block {
+    aspect-ratio: 3/4;
+    max-width: 240px;
+    margin-left: auto;
+    border-radius: 999px 999px 12px 12px;
+    background: var(--color-brown);
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    color: var(--color-cream);
+    font-family: var(--font-heading);
+    font-size: 2.4rem;
+    text-align: center;
+    line-height: 1;
+    padding: 1rem;
+}
+.skills__block span {
+    position: relative;
+    z-index: 1;
+}
+.skills__list h3 {
+    font-size: 1.8rem;
+    color: var(--color-maroon);
+    margin-bottom: 1rem;
+}
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    list-style: none;
+}
+.tags li {
+    padding: 0.35rem 0.9rem;
+    border: 1.5px solid var(--color-maroon);
+    border-radius: var(--radius-pill);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-maroon);
+    transition:
+        background 0.2s,
+        color 0.2s;
+}
+.tags li:hover {
+    background: var(--color-maroon);
+    color: var(--color-cream);
+}
+
+/* ==========================================================
+   6. MARQUEE ("MY VALUES")
+   ========================================================== */
+.marquee {
+    background: var(--color-cream);
+    overflow: hidden;
+    padding: 2rem 0 3rem;
+}
+.marquee__track {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+    animation: scroll var(--marquee-speed) linear infinite;
+}
+.marquee__group {
+    display: flex;
+    flex-shrink: 0;
+}
+.marquee__group span {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    font-size: clamp(4rem, 13vw, 9.5rem);
+    line-height: 1;
+    color: var(--color-brown);
+    padding-right: 0.6em;
+    white-space: nowrap;
+}
+@keyframes scroll {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* ==========================================================
+   7. VALUES (dark textured background)
+   ========================================================== */
+.values {
+    position: relative;
+    background:
+        repeating-linear-gradient(
+            115deg,
+            transparent 0 70px,
+            rgba(0, 0, 0, 0.35) 70px 150px,
+            transparent 150px 230px
+        ),
+        linear-gradient(160deg, #4a3a33 0%, var(--color-brown) 100%);
+    padding: clamp(3.5rem, 8vw, 6rem) 0;
+}
+.values__grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    max-width: var(--content-width);
+    margin-inline: auto;
+}
+.card {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-maroon-deep);
+    color: var(--color-cream);
+    padding: 1.6rem 1.5rem 1.8rem;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+}
+.card h3 {
+    font-size: 1.35rem;
+    margin-bottom: 0.8rem;
+    position: relative;
+    z-index: 1;
+}
+.card p {
+    font-size: 0.78rem;
+    line-height: 1.75;
+    position: relative;
+    z-index: 1;
+}
+.card__num {
+    position: absolute;
+    right: 1rem;
+    top: 0.4rem;
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    opacity: 0.15;
+}
+
+/* ==========================================================
+   8. CONTACT
+   ========================================================== */
+.contact {
+    background: var(--color-blush);
+    padding: clamp(4rem, 9vw, 7rem) 0 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.contact h2 {
+    font-size: clamp(3rem, 10vw, 8rem);
+    color: var(--color-maroon);
+    margin: 0.8rem 0 1.5rem;
+}
+.contact p {
+    max-width: 460px;
+    margin: 0 auto 2rem;
+}
+.contact__links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 4rem;
+}
+.footer {
+    border-top: 1px solid rgba(42, 18, 16, 0.25);
+    padding-top: 1.4rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+/* ==========================================================
+   9. SCROLL REVEAL
+   ========================================================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+.reveal.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* ==========================================================
+   10. RESPONSIVE
+   ========================================================== */
+@media (max-width: 800px) {
+    .nav__links li:not(:last-child) {
+        display: none;
+    }
+    .hero__title {
+        white-space: normal;
+        line-height: 0.9;
+        padding: 0 var(--gutter);
+    }
+    .hero__stage {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto auto;
+        min-height: 0;
+        row-gap: 1.25rem;
+    }
+    .arch {
+        grid-column: 1 / -1;
+        grid-row: 1;
+        justify-self: center;
+        height: 320px;
+    }
+    .hero__label--left {
+        grid-column: 1;
+        grid-row: 2;
+    }
+    .hero__label--right {
+        grid-column: 2;
+        grid-row: 2;
+    }
+    .hero__label svg {
+        display: none;
+    }
+    .hero__label--stat {
+        display: none;
+    }
+    .hero__cta {
+        grid-column: 1 / -1;
+        grid-row: 3;
+        justify-self: center;
+        margin-bottom: 2rem;
+    }
+    .about__grid {
+        grid-template-columns: 1fr;
+    }
+    .polaroid {
+        max-width: 220px;
+        margin-inline: auto;
+    }
+    .skills {
+        grid-template-columns: 1fr;
+    }
+    .skills__block {
+        margin: 0 auto;
+        max-width: 180px;
+    }
+    .values__grid {
+        grid-template-columns: 1fr;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .arch .cursor {
+        animation: none;
+    }
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    html {
+        scroll-behavior: auto;
+    }
+}
