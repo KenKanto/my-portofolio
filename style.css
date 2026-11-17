@@ -598,9 +598,27 @@ h2 em {
 /* ==========================================================
    10. RESPONSIVE
    ========================================================== */
+
+/* --- Tablet --- */
+@media (max-width: 900px) {
+    .about__grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .polaroid {
+        grid-column: 1 / -1;
+        max-width: 220px;
+        margin-inline: auto;
+    }
+}
+
+/* --- Mobile --- */
 @media (max-width: 800px) {
     .nav__links li:not(:last-child) {
         display: none;
+    }
+    .hero {
+        min-height: auto;
+        padding-bottom: 2rem;
     }
     .hero__title {
         white-space: normal;
@@ -618,6 +636,9 @@ h2 em {
         grid-row: 1;
         justify-self: center;
         height: 320px;
+    }
+    .arch pre {
+        font-size: clamp(0.55rem, 2.6vw, 0.8rem);
     }
     .hero__label--left {
         grid-column: 1;
@@ -655,6 +676,60 @@ h2 em {
     }
     .values__grid {
         grid-template-columns: 1fr;
+    }
+    .marquee {
+        padding: 1.25rem 0 2rem;
+    }
+    .contact__links .btn {
+        width: 100%;
+        max-width: 320px;
+    }
+}
+
+/* --- Small phones --- */
+@media (max-width: 480px) {
+    .nav__logo {
+        font-size: 1.15rem;
+    }
+    .nav__links {
+        gap: 0.8rem;
+    }
+    .arch {
+        height: 260px;
+        width: clamp(200px, 70vw, 280px);
+    }
+    .hero__label {
+        font-size: 0.65rem;
+    }
+    .hero__label--right {
+        text-align: right;
+    }
+    .about__lead {
+        font-size: 0.85rem;
+    }
+    .skills__block {
+        max-width: 150px;
+    }
+    .card {
+        padding: 1.3rem 1.2rem 1.5rem;
+    }
+    .card__num {
+        font-size: 2.4rem;
+    }
+    .footer {
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+/* --- Landscape phone: hero tidak perlu full height --- */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding-bottom: 1.5rem;
+    }
+    .hero__label--stat {
+        display: none;
     }
 }
 @media (prefers-reduced-motion: reduce) {
