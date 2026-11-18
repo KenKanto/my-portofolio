@@ -587,13 +587,17 @@ h2 em {
    9. SCROLL REVEAL
    ========================================================== */
 .reveal {
-    opacity: 0;
-    transform: translateY(28px);
+    opacity: 1;
+    transform: none;
     transition:
         opacity 0.8s ease,
         transform 0.8s ease;
 }
-.reveal.is-visible {
+.js .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+}
+.js .reveal.is-visible {
     opacity: 1;
     transform: none;
 }
@@ -739,7 +743,8 @@ h2 em {
     .arch .cursor {
         animation: none;
     }
-    .reveal {
+    .reveal,
+    .js .reveal {
         opacity: 1;
         transform: none;
         transition: none;
