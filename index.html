@@ -28,9 +28,24 @@
                 <ul class="nav__links">
                     <li><a href="#about" data-i18n="nav.about">About</a></li>
                     <li><a href="#values" data-i18n="nav.values">Values</a></li>
-                    <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
-                    <li><a href="#contact" class="btn" data-i18n="nav.talk">Let's talk</a></li>
-                    <li><button type="button" class="lang-btn" id="langBtn" aria-label="Switch language">ID</button></li>
+                    <li>
+                        <a href="#contact" data-i18n="nav.contact">Contact</a>
+                    </li>
+                    <li>
+                        <a href="#contact" class="btn" data-i18n="nav.talk"
+                            >Let's talk</a
+                        >
+                    </li>
+                    <li>
+                        <button
+                            type="button"
+                            class="lang-btn"
+                            id="langBtn"
+                            aria-label="Switch language"
+                        >
+                            ID
+                        </button>
+                    </li>
                 </ul>
             </div>
         </header>
@@ -38,13 +53,15 @@
         <main id="top">
             <!-- ============ HERO ============ -->
             <section class="hero">
-                <h1 class="hero__title" data-i18n-html="hero.title">Hi, <em>I'm</em> Kanto</h1>
+                <h1 class="hero__title" data-i18n-html="hero.title">
+                    Hi, <em>I'm</em> Kanto
+                </h1>
 
                 <div class="hero__stage">
                     <div class="hero__label hero__label--left">
                         <span data-i18n-html="hero.labelLeft"
-                            >Computer science<br />student &amp;
-                            aspiring<br />software engineer</span
+                            >Computer science<br />student &amp; aspiring<br />software
+                            engineer</span
                         >
                         <svg viewBox="0 0 56 34">
                             <path d="M4 8 C 18 -2, 40 4, 46 22" />
@@ -82,7 +99,12 @@
                         >
                     </div>
 
-                    <a href="#contact" class="btn hero__cta" data-i18n="hero.cta">Work with me</a>
+                    <a
+                        href="#contact"
+                        class="btn hero__cta"
+                        data-i18n="hero.cta"
+                        >Work with me</a
+                    >
                 </div>
             </section>
 
@@ -90,7 +112,9 @@
             <section class="about" id="about">
                 <div class="container">
                     <div class="about__head reveal">
-                        <span class="script" data-i18n="about.script">Hey, I'm Kanto</span>
+                        <span class="script" data-i18n="about.script"
+                            >Hey, I'm Kanto</span
+                        >
                         <h2 data-i18n-html="about.title">
                             Student, builder,<br />and <em>lifelong</em> learner
                         </h2>
@@ -115,12 +139,17 @@
                                 software, one commit at a time. Every project is
                                 practice, every bug is a lesson.
                             </p>
-                            <a href="#contact" class="btn" data-i18n="hero.cta">Work with me</a>
+                            <a href="#contact" class="btn" data-i18n="hero.cta"
+                                >Work with me</a
+                            >
                         </div>
 
                         <figure class="polaroid reveal">
                             <div class="polaroid__img grain">K.</div>
-                            <figcaption class="polaroid__cap" data-i18n="about.caption">
+                            <figcaption
+                                class="polaroid__cap"
+                                data-i18n="about.caption"
+                            >
                                 currently: debugging ☕
                             </figcaption>
                         </figure>
@@ -152,12 +181,16 @@
             <div class="marquee" aria-hidden="true">
                 <div class="marquee__track">
                     <div class="marquee__group">
-                        <span data-i18n="marquee">My Values</span><span data-i18n="marquee">My Values</span
-                        ><span data-i18n="marquee">My Values</span><span data-i18n="marquee">My Values</span>
+                        <span data-i18n="marquee">My Values</span
+                        ><span data-i18n="marquee">My Values</span
+                        ><span data-i18n="marquee">My Values</span
+                        ><span data-i18n="marquee">My Values</span>
                     </div>
                     <div class="marquee__group">
-                        <span data-i18n="marquee">My Values</span><span data-i18n="marquee">My Values</span
-                        ><span data-i18n="marquee">My Values</span><span data-i18n="marquee">My Values</span>
+                        <span data-i18n="marquee">My Values</span
+                        ><span data-i18n="marquee">My Values</span
+                        ><span data-i18n="marquee">My Values</span
+                        ><span data-i18n="marquee">My Values</span>
                     </div>
                 </div>
             </div>
@@ -209,8 +242,14 @@
             <!-- ============ CONTACT ============ -->
             <section class="contact" id="contact">
                 <div class="container">
-                    <span class="script reveal say-hello" data-i18n="contact.script">Say hello</span>
-                    <h2 class="reveal" data-i18n-html="contact.title">Let's build<br /><em>something</em></h2>
+                    <span
+                        class="script reveal say-hello"
+                        data-i18n="contact.script"
+                        >Say hello</span
+                    >
+                    <h2 class="reveal" data-i18n-html="contact.title">
+                        Let's build<br /><em>something</em>
+                    </h2>
                     <p class="reveal" data-i18n="contact.text">
                         Have a project, an internship opportunity, or just want
                         to talk about code? My inbox is always open.
@@ -220,7 +259,7 @@
                             href="mailto:your.email@example.com"
                             class="btn btn--ghost"
                             data-i18n="contact.email"
-                            >Email me</a
+                            >Email Me</a
                         >
                         <a
                             href="https://github.com/KenKanto"
@@ -240,7 +279,9 @@
 
                     <footer class="footer">
                         <span>© <span id="year"></span> Kanto</span>
-                        <span data-i18n="footer.credit">Designed &amp; coded by me</span>
+                        <span data-i18n="footer.credit"
+                            >Designed &amp; coded by me</span
+                        >
                     </footer>
                 </div>
             </section>

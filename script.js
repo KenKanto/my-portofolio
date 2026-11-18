@@ -38,7 +38,7 @@ const I18N = {
         "nav.values": "Values",
         "nav.contact": "Contact",
         "nav.talk": "Let's talk",
-        "hero.title": 'Hi, <em>I\'m</em> Kanto',
+        "hero.title": "Hi, <em>I'm</em> Kanto",
         "hero.labelLeft":
             "Computer science<br />student &amp; aspiring<br />software engineer",
         "hero.labelRight":
@@ -56,7 +56,7 @@ const I18N = {
         "about.caption": "currently: debugging ☕",
         "about.learning": "Always<br /><em>learning</em>",
         "about.tools": "Tools I work with",
-        "marquee": "My Values",
+        marquee: "My Values",
         "values.c1.title": "Curiosity",
         "values.c1.text":
             'I never stop asking "why does this work?" Understanding the fundamentals matters more to me than copying a quick fix. Real mastery starts with real questions.',
@@ -77,29 +77,30 @@ const I18N = {
         "footer.credit": "Designed &amp; coded by me",
     },
     id: {
-        "nav.about": "Tentang",
-        "nav.values": "Nilai",
-        "nav.contact": "Kontak",
-        "nav.talk": "Ngobrol yuk",
-        "hero.title": 'Hai, <em>saya</em> Kanto',
+        // "nav.about": "Abou",
+        // "nav.values": "Nilai",
+        // "nav.contact": "Kontak",
+        // "nav.talk": "Ngobrol yuk",
+        "hero.title": "Hai, <em>saya</em> Kanto",
         "hero.labelLeft":
-            "Mahasiswa<br />ilmu komputer &amp;<br />calon software engineer",
+            "Mahasiswa<br />Informatika &amp;<br />calon software engineer",
         "hero.labelRight":
             "Pembuat<br />proyek web yang<br />rapi &amp; bermakna",
         "hero.labelStat": "Selalu<br />merilis<br />proyek sampingan",
-        "hero.cta": "Ajak saya kerja",
+        "hero.cta": "Mari bekerja sama",
         "about.script": "Hai, saya Kanto",
-        "about.title": "Mahasiswa, pembuat,<br />dan <em>pembelajar</em> seumur hidup",
+        "about.title":
+            "Mahasiswa, pembuat,<br />dan <em>pembelajar</em> seumur hidup",
         "about.lead":
             "Saya ingat momen saat menulis baris kode pertama dan kode itu benar-benar berjalan. Sejak itu saya terus mengejar rasa yang sama.",
         "about.p1":
-            "Saya mahasiswa ilmu komputer yang ingin menjadi programmer kelas master. Bukan yang sekadar hafal sintaks, tapi yang benar-benar paham cara kerja di balik layar.",
+            "Saya mahasiswa Informatika yang ingin menjadi programmer profesional. Bukan yang sekadar hafal sintaks, tapi yang benar-benar paham cara kerja di balik layar.",
         "about.p2":
-            "Saya suka mengubah ide menjadi perangkat lunak yang benar-benar berjalan, satu commit setiap kali. Setiap proyek adalah latihan, setiap bug adalah pelajaran.",
+            "Saya suka mengubah ide menjadi softwere yang benar-benar berjalan, satu commit setiap kali. Setiap proyek adalah latihan, setiap bug adalah pelajaran.",
         "about.caption": "sekarang: memperbaiki bug ☕",
-        "about.learning": "Terus<br /><em>belajar</em>",
+        "about.learning": "Always<br /><em>learning</em>",
         "about.tools": "Alat yang saya pakai",
-        "marquee": "Nilai Saya",
+        marquee: "My Values",
         "values.c1.title": "Rasa Ingin Tahu",
         "values.c1.text":
             'Saya tak pernah berhenti bertanya "kenapa ini bisa jalan?" Memahami dasar jauh lebih penting bagi saya daripada menyalin solusi cepat. Penguasaan sejati dimulai dari pertanyaan yang sejati.',
@@ -112,12 +113,12 @@ const I18N = {
         "values.c4.title": "Pola Pikir Bertumbuh",
         "values.c4.text":
             "Bug, build gagal, dan error yang membingungkan adalah bagian dari proses. Setiap kesalahan saya anggap umpan balik, dan saya selalu siap belajar, beradaptasi, dan mencoba lagi.",
-        "contact.script": "Sapa saya",
+        "contact.script": "Say hello",
         "contact.title": "Mari bangun<br /><em>sesuatu</em>",
         "contact.text":
-            "Punya proyek, tawaran magang, atau sekadar ingin ngobrol soal kode? Kotak masuk saya selalu terbuka.",
-        "contact.email": "Kirim email",
-        "footer.credit": "Dirancang &amp; dikodekan sendiri",
+            "Punya proyek, tawaran magang, atau sekadar ingin ngobrol soal pemrograman? Mari terhubung dan berkolaborasi.",
+        // "contact.email": "Kirim email",
+        // "footer.credit": "Dirancang &amp; dikodekan sendiri",
     },
 };
 
@@ -134,7 +135,10 @@ function setLang(lang) {
     });
     document.documentElement.lang = lang;
     langBtn.textContent = lang === "en" ? "ID" : "EN";
-    langBtn.setAttribute("aria-label", lang === "en" ? "Ganti ke Bahasa Indonesia" : "Switch to English");
+    langBtn.setAttribute(
+        "aria-label",
+        lang === "en" ? "Ganti ke Bahasa Indonesia" : "Switch to English",
+    );
     try {
         localStorage.setItem("lang", lang);
     } catch {}
