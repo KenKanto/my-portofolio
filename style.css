@@ -176,6 +176,27 @@ h2 em {
     color: var(--color-primary);
 }
 
+/* Language toggle: same weight as nav links, outline on hover */
+.lang-btn {
+    padding: 0.3rem 0.65rem;
+    font-family: var(--font-base);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--color-secondary);
+    background: transparent;
+    border: 1.5px solid currentColor;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition:
+        background 0.2s,
+        color 0.2s;
+}
+.lang-btn:hover {
+    background: var(--color-secondary);
+    color: var(--color-bg-light);
+}
+
 /* ==========================================================
    4. HERO
    ========================================================== */
